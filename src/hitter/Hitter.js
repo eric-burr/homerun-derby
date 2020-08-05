@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
+import Addhitter from './Addhitter'
 
 export class Hitter extends Component {
+    constructor(props) {
+        super(props)
+        this.state= {
+            signup: true
+        }
+    }
 
     // pitches = () => {
     //     counter = 10
@@ -19,26 +26,32 @@ export class Hitter extends Component {
     //     add to list number 2
     // }
 
+    beHitter = () => {
+        console.log("new hitter")
+        this.setState({signup: !this.state.signup})
+    }
+
     render() {
         return (
             <div>
-                <ul>
-                    <li>
-                        list of who has hit
-                    </li>
+                <div>
+                    <button onClick={this.beHitter}>Be a Hitter</button>
+                </div>
+                    {/* ternary operator  */}
+                {this.state.signup ? <div></div> :
+                <Addhitter />}
+
+              Results<ul> 
+                    <li>Bob</li>
+                    <li>Sally</li>
+                    <li>Sue</li>
                 </ul>
-                <ul>
-                    <li>
-                        list of who is yet to hit
-                    </li>
+                Up to bat<ul> 
+                    <div onClick={this.click} >Eric</div>
+                    <li>Steve</li>
                 </ul>
                 <button>hit</button><br/>
                 <button>homerun</button>
-
-                <div>
-                    add new hitter
-                    <button>add</button>
-                </div>
             </div>
         )
     }
