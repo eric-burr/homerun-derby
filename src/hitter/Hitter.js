@@ -5,7 +5,8 @@ export class Hitter extends Component {
     constructor(props) {
         super(props)
         this.state= {
-            signup: true
+            signup: true,
+            needtoHit: []
         }
     }
 
@@ -30,6 +31,10 @@ export class Hitter extends Component {
         console.log("new hitter")
         this.setState({signup: !this.state.signup})
     }
+    onChange = (e) => 
+        this.setState({
+            [e.target.name]: e.target.value
+        });
 
     render() {
         return (
@@ -39,12 +44,13 @@ export class Hitter extends Component {
                 </div>
                     {/* ternary operator  */}
                 {this.state.signup ? <div></div> :
-                <Addhitter />}
+                <Addhitter change={this.onChange}/>}
 
               Results<ul> 
                     <li>Bob</li>
                     <li>Sally</li>
                     <li>Sue</li>
+                    <li>{}</li>
                 </ul>
                 Up to bat<ul> 
                     <div onClick={this.click} >Eric</div>
